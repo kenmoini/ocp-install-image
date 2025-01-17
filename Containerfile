@@ -9,6 +9,7 @@ RUN wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable
  && tar zxvf openshift-install-rhel9-amd64.tar.gz \
  && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
  && tar zxvf openshift-client-linux.tar.gz \
+ && rm openshift-client-linux.tar.gz openshift-install-rhel9-amd64.tar.gz \
  && chmod a+x oc kubectl openshift-install-fips \
  && mv oc kubectl openshift-install-fips /usr/local/bin/ \
  && cp /usr/local/bin/openshift-install-fips /usr/local/bin/openshift-install
