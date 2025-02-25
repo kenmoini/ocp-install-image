@@ -6,11 +6,15 @@ USER 0
 # No more ansible-core?????
 #RUN dnf update -y && dnf install -y git wget nmstate tar ansible-core
 
-RUN dnf update -y && dnf install -y git wget nmstate tar python3-pip \
- && python3 -m pip install ansible jmespath nmstate
+RUN dnf update -y && dnf install -y git wget nmstate tar jq python3-pip python3-devel \
+ && python3 -m pip install ansible jmespath nmstate \
+ && ansible-galaxy collection install community.general \
+ && ansible-galaxy collection install community.crypto \
+ && dnf clean all \
+ && rm -rf /var/cache/yum
 
 RUN wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz \
- && tar zxvf openshift-install-linux-amd64.tar.gz \
+ && tar zxvf openshift-install-linux.tar.gz \
  && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
  && tar zxvf openshift-client-linux.tar.gz \
  && rm openshift-client-linux.tar.gz openshift-install-linux.tar.gz \
