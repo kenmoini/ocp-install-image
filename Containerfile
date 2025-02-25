@@ -22,4 +22,4 @@ RUN mkdir -p /tmp/bintmp \
  && chmod a+x oc kubectl openshift-install \
  && mv oc kubectl openshift-install /usr/local/bin/ \
  && cd / \
- && rmdir -rf /tmp/bintmp
+ && rm -rf /tmp/bintmp
