@@ -19,7 +19,16 @@ RUN mkdir -p /tmp/bintmp \
  && tar zxvf openshift-install-linux.tar.gz \
  && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
  && tar zxvf openshift-client-linux.tar.gz \
- && chmod a+x oc kubectl openshift-install \
- && mv oc kubectl openshift-install /usr/local/bin/ \
+ && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/oc-mirror.rhel9.tar.gz \
+ && tar zxvf oc-mirror.rhel9.tar.gz \
+ && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/opm-linux-rhel9.tar.gz \
+ && tar zxvf opm-linux-rhel9.tar.gz \
+ && mv opm-rhel9 opm \
+ && wget https://mirror.openshift.com/pub/openshift-v4/clients/butane/latest/butane-amd64 \
+ && mv butane-amd64 butane \
+ && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/ccoctl-linux.tar.gz \
+ && tar zxvf ccoctl-linux.tar.gz \
+ && chmod a+x oc kubectl openshift-install oc-mirror opm butane ccoctl \
+ && mv oc kubectl openshift-install oc-mirror opm butane ccoctl /usr/local/bin/ \
  && cd / \
  && rm -rf /tmp/bintmp
