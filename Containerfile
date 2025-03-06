@@ -7,7 +7,7 @@ USER 0
 #RUN dnf update -y && dnf install -y git wget nmstate tar ansible-core
 
 RUN dnf update -y \
- && dnf copr enable nmstate/nmstate-git \
+ && dnf copr enable nmstate/nmstate-git -y \
  && dnf install -y git wget nmstate tar jq python3-pip python3-devel nano \
  && python3 -m pip install ansible jmespath nmstate \
  && ansible-galaxy collection install community.general \
